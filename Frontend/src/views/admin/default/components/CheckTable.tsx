@@ -27,7 +27,7 @@ function CheckTable() {
   useEffect(() => {
     const fetchData = () => {
       // Replace 'http://your-nodejs-server-url/api/data' with the actual URL of your Node.js backend.
-      fetch("https://binance-server-92cg.onrender.com")
+      fetch("https://binance-server-pnyx.onrender.com")
         .then((response) => response.json())
         .then((responseData) => {
           // Extract the lol2 array from the response data

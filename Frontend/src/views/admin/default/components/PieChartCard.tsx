@@ -33,7 +33,7 @@ const PieChartCard = () => {
   
   
   const fetchData = () => {
-    fetch("https://binance-server-92cg.onrender.com")
+    fetch("https://binance-server-pnyx.onrender.com")
       .then((response) => response.json())
       .then((data) => {
         if (data && data.queue2 && data.queue3) {
