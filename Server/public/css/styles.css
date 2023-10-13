@@ -1,0 +1,25 @@
+
+
+body {
+  
+  background-color:#f8fafc;
+  
+}
+
+#hidden-div {
+  display: none;
+}
+
+/* Styles for dark mode */
+.dark-mode {
+   /* Change this to your desired dark background color */
+  color:white; /* Change text color in dark mode */
+  /* Add more styles as needed */
+}
+
+/* CSS for medium-sized screens and larger (show the div) */
+@media screen and (min-width: 1024px) {
+  #hidden-div {
+    display: flex; /* or any other appropriate display value */
+  }
+}
