@@ -10,59 +10,77 @@ const PieChart = () => {
     // Your chart options here
   });
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3001")
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data && data.queue2 && data.queue3) {
-  //         const lolLength = data.queue2.length;
-  //         const lol2Length = data.queue3.length;
-  //         const newPieChartData = [lolLength, lol2Length];
-  //         setChartData(newPieChartData);
 
-  //         const newChartOptions = {
-  //           ...pieChartOptions, // Use your default options
-            
-  //         };
-          
-  //         setChartOptions(newChartOptions);
-  //       } else {
-  //         console.error("Data or properties are undefined or do not exist.");
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //     });
-  // }, []);
+  
 
 
 
+
+
+  // const fetchData = () => {
+  //   fetch("https://binance-server-pnyx.onrender.com")
+  //   .then((response) => response.json())
+  //   .then((data) => {
+  //     if (data && data.queue2 && data.queue3) {
+  //       const lolLength = data.queue2.length;
+  //       const lol2Length = data.queue3.length;
+  //       const newPieChartData = [lolLength,lol2Length];
+
+  //       setChartData(newPieChartData);
+
+  //       const newChartOptions = {
+  //         ...pieChartOptions, // Use your default options
+  //       };
+
+  //       setChartOptions(newChartOptions);
+  //     } else {
+        
+  //       console.error("Data or properties are undefined or do not exist.");
+  //     }
+  //   })
+  //   .catch((error) => {
+      
+  //     console.error("Error fetching data:", error);
+  //   });
+  // };
 
 
   const fetchData = () => {
     fetch("https://binance-server-pnyx.onrender.com")
-    .then((response) => response.json())
-    .then((data) => {
-      if (data && data.queue2 && data.queue3) {
-        const lolLength = data.queue2.length;
-        const lol2Length = data.queue3.length;
+      .then((response) => response.json())
+      .then((data) => {
+        let lolLength = 0;
+        let lol2Length = 0;
+  
+        if (data && data.queue2 && data.queue3) {
+          lolLength = data.queue2.length;
+          lol2Length = data.queue3.length;
+        } else {
+          console.error("Data or properties are undefined or do not exist.");
+        }
+  
         const newPieChartData = [lolLength, lol2Length];
-        setChartData(newPieChartData);
-
+  
+        // Check if both lolLength and lol2Length are zero and set static data if so
+        if (lolLength === 0 && lol2Length === 0) {
+          setChartData([1, 1]);
+        } else {
+          setChartData(newPieChartData);
+        }
+  
         const newChartOptions = {
           ...pieChartOptions, // Use your default options
-          
         };
-        
+  
         setChartOptions(newChartOptions);
-      } else {
-        console.error("Data or properties are undefined or do not exist.");
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   };
+  
+
+
 
   useEffect(() => {
     // Fetch data initially
